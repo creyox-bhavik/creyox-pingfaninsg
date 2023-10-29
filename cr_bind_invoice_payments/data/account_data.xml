@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="action_bind_payments_with_invoice" model="ir.actions.server">
+            <field name="name">Bind Payments</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">
+                for invoice_id in records.ids:
+                    invoice = env['account.move'].search([('id','=',invoice_id)])
+                    if invoice.invoice_outstanding_credits_debits_widget:
+                        invcontent = invoice.invoice_outstanding_credits_debits_widget.get('content', False)
+                        if invcontent:
+                            for line in invcontent:
+                                aml = env['account.move'].search([('id','=',line.get('move_id',False))])
+                                if line.get('id',False) and line.get('journal_name') == invoice.name:
+                                    invoice.js_assign_outstanding_line(line.get('id',False))
+                                    invoice = invoice.search([('id','=',invoice.id)])
+                                    if invoice.payment_state == 'paid':
+                                        env.cr.commit()
+                                        break
+            </field>
+        </record>
+    </data>
+</odoo>
