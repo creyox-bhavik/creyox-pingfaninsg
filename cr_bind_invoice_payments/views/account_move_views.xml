@@ -8,12 +8,12 @@
             <xpath expr="//form/sheet/div[hasclass('oe_title')]/h1" position="replace">
                 <h1>
                     <field name="name"
-                           attrs="{'invisible':['&amp;', '&amp;', '|', ('name', '=', '/'), ('posted_before', '=', False), ('quick_edit_mode', '=', False), ('old_name', '!=', '')], 'readonly': [('state', '!=', 'draft')]}"
+                           attrs="{'invisible':['|', ('old_name', '!=', ''), '&amp;', '&amp;', ('name', '=', '/'), ('posted_before', '=', False), ('quick_edit_mode', '=', False)], 'readonly': [('state', '!=', 'draft')]}"
                            placeholder="Draft"/>
                     <field name="old_name"
                            attrs="{'invisible':[('old_name', '=', False)], 'readonly': [('state', '!=', 'draft')]}"
                            placeholder="Draft"/>
-                    <span attrs="{'invisible': ['|', '|', '|', ('old_name', '=', ''), ('state', '!=', 'draft'), ('name', '!=', '/'), ('quick_edit_mode', '=', True)]}">
+                    <span attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'draft'), ('name', '!=', '/'), ('quick_edit_mode', '=', True), ('old_name', '!=', '')]}">
                         Draft
                     </span>
                 </h1>

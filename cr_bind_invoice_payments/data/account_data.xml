@@ -14,12 +14,14 @@
                         if invcontent:
                             for line in invcontent:
                                 aml = env['account.move'].search([('id','=',line.get('move_id',False))])
-                                if line.get('id',False) and line.get('journal_name') == invoice.name:
-                                    invoice.js_assign_outstanding_line(line.get('id',False))
-                                    invoice = invoice.search([('id','=',invoice.id)])
-                                    if invoice.payment_state == 'paid':
-                                        env.cr.commit()
-                                        break
+                                if line.get('account_payment_id'):
+                                    payment_id = env['account.payment'].browse(line.get('account_payment_id'))
+                                    if line.get('id',False) and payment_id and payment_id.cr_payment_reference == invoice.old_name:
+                                        invoice.js_assign_outstanding_line(line.get('id',False))
+                                        invoice = invoice.search([('id','=',invoice.id)])
+                                        if invoice.payment_state == 'paid':
+                                            env.cr.commit()
+                                            break
             </field>
         </record>
     </data>
