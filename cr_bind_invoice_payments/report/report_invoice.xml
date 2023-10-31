@@ -13,5 +13,19 @@
                 <span t-if="o.name != '/' and o.old_name == ''" t-field="o.name"/>
             </h2>
         </xpath>
+
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" class="mt-4">
+                Please use the following communication for your payment :
+                <b>
+                    <t t-if="o.old_name">
+                        <span t-field="o.old_name"/>
+                    </t>
+                    <t t-elif="o.name">
+                        <span t-field="o.payment_reference"/>
+                    </t>
+                </b>
+            </p>
+        </xpath>
     </template>
 </odoo>
