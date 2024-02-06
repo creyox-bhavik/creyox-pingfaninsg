@@ -7,7 +7,7 @@ class AccountPayment(models.Model):
 
     old_name = fields.Char()
     cr_payment_reference = fields.Char()
-    payment_info_line = fields.One2many('payment.info', 'payment_id')
+    payment_info_line = fields.One2many('payment.info', 'payment_id',copy=True)
 
     @api.model
     def create(self, values):
