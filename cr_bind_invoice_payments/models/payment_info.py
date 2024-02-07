@@ -9,3 +9,4 @@ class PaymentInfo(models.Model):
     payment_id = fields.Many2one('account.payment')
     invoice_name = fields.Char()
     payment_amount = fields.Float()
+    is_checked = fields.Boolean()
