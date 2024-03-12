@@ -34,6 +34,7 @@ class AccountMove(models.Model):
         if 'name' in vals:
 
             _logger.info("\n\n 36 %s",vals)        
+            del vals['name']
             
             res = super().write(vals)
 
