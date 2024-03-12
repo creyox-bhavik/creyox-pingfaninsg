@@ -18,8 +18,8 @@ class AccountPayment(models.Model):
         res.sudo().move_id._compute_name()
         return res
 
-    def _synchronize_to_moves(self, changed_fields):
-        _logger.info("\n\n 22")        
+    # def _synchronize_to_moves(self, changed_fields):
+    #     _logger.info("\n\n 22")        
     
 
     def write(self,vals):
