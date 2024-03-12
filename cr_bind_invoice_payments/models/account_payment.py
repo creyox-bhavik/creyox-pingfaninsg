@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
@@ -17,4 +19,4 @@ class AccountPayment(models.Model):
         return res
 
     def _synchronize_to_moves(self, changed_fields):
-        pass
+        _logger.info("\n\n 22" + 22)        

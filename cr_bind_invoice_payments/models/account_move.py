@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
@@ -25,3 +27,18 @@ class AccountMove(models.Model):
         # if self.journal_id.payment_sequence and is_payment:
         #     starting_sequence = "P" + starting_sequence
         return starting_sequence
+
+    def write(self,vals):
+        _logger.info("\n\n 17" + vals)        
+
+        if 'name' in vals:
+
+            _logger.info("\n\n 36" + vals)        
+            
+            res = super().write(vals)
+
+            return res
+
+        else:
+            res = super().write(vals)
+            return res
