@@ -35,7 +35,7 @@ class AccountMove(models.Model):
 
             _logger.info("\n\n 36 %s",vals)        
             del vals['name']
-            
+            _logger.info("\n\n 38 %s",vals)        
             res = super().write(vals)
 
             return res
