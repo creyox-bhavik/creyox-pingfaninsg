@@ -19,11 +19,11 @@ class AccountPayment(models.Model):
         return res
 
     def _synchronize_to_moves(self, changed_fields):
-        _logger.info("\n\n 22" + 22)        
+        _logger.info("\n\n 22")        
     
 
     def write(self,vals):
-        _logger.info("\n\n 26" + vals)        
+        _logger.info("\n\n 26 %s", vals)        
         res = super().write(vals)
 
         return res

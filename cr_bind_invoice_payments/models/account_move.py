@@ -29,11 +29,11 @@ class AccountMove(models.Model):
         return starting_sequence
 
     def write(self,vals):
-        _logger.info("\n\n 17" + vals)        
+        _logger.info("\n\n 17 %s",vals)        
 
         if 'name' in vals:
 
-            _logger.info("\n\n 36" + vals)        
+            _logger.info("\n\n 36 %s",vals)        
             
             res = super().write(vals)
 
