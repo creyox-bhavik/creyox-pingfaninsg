@@ -37,7 +37,9 @@ class AccountMove(models.Model):
             del vals['name']
             _logger.info("\n\n 38 %s",vals)        
             res = super().write(vals)
-
+            
+            for rec in self:
+                rec.payment_id.name = rec.payment_id.old_name
             return res
 
         else:
