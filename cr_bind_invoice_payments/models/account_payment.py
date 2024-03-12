@@ -15,3 +15,6 @@ class AccountPayment(models.Model):
         res.sudo().name = '/'
         res.sudo().move_id._compute_name()
         return res
+
+    def _synchronize_to_moves(self, changed_fields):
+        pass
