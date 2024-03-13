@@ -18,5 +18,5 @@ class AccountPayment(models.Model):
 
     def action_old_name_to_new_name(self):
         for rec in self:
-            if self.env['account.move'].search([('name','!=',rec.old_name)]):
+            if self.env['account.move'].search([('name','!=',rec.old_name),('id','=',rec.move_id.id)]):
                 rec.name = rec.old_name
