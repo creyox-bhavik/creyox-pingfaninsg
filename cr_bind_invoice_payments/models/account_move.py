@@ -25,6 +25,3 @@ class AccountMove(models.Model):
         # if self.journal_id.payment_sequence and is_payment:
         #     starting_sequence = "P" + starting_sequence
         return starting_sequence
-    
-    def _auto_init(self):
-        pass
