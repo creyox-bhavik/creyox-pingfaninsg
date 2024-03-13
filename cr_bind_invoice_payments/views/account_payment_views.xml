@@ -25,8 +25,8 @@
 
     <record id="action_update_old_name_to_new_name" model="ir.actions.server">
         <field name="name">OLD name to new name in payment</field>
-        <field name="model_id" ref="purchase.model_account_payment"/>
-        <field name="binding_model_id" ref="purchase.model_account_payment"/>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="binding_model_id" ref="account.model_account_payment"/>
         <field name="binding_view_types">list,form</field>
         <field name="state">code</field>
         <field name="code">
