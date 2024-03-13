@@ -15,3 +15,7 @@ class AccountPayment(models.Model):
         res.sudo().name = '/'
         res.sudo().move_id._compute_name()
         return res
+
+    def action_old_name_to_new_name(self):
+        for rec in self:
+            rec.name = rec.old_name
